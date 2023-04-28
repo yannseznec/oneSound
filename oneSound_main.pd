@@ -1,4 +1,4 @@
-#N canvas 768 160 417 356 12;
+#N canvas 1013 128 417 356 12;
 #N canvas 13 163 1069 709 guts 0;
 #X obj 37 59 array define oneSound;
 #X obj 38 289 soundfiler;
@@ -16,17 +16,17 @@
 #X obj 37 37 s all_random;
 #X obj 37 20 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 351 201 metro 200, f 12;
-#X msg 351 225 1;
-#X obj 351 249 + 1;
-#X floatatom 351 273 5 0 0 0 - - - 0;
-#X obj 351 296 % 20, f 7;
-#X floatatom 351 318 5 0 0 0 - - - 0;
-#X obj 351 183 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 346 243 metro 200, f 12;
+#X msg 346 267 1;
+#X obj 346 291 + 1;
+#X floatatom 346 315 5 0 0 0 - - - 0;
+#X obj 346 338 % 20, f 7;
+#X floatatom 346 360 5 0 0 0 - - - 0;
+#X obj 346 225 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 351 385 send, f 5;
-#X msg 383 362 symbol \$1_trigger;
-#X obj 351 340 t b f;
+#X obj 346 427 send, f 5;
+#X msg 378 404 symbol \$1_trigger;
+#X obj 346 382 t b f;
 #X msg 37 161 vis 2 1;
 #X obj 559 215 tabwrite~ oneSound;
 #X obj 559 157 adc~;
@@ -49,12 +49,12 @@
 #X obj 37 88 loadbang;
 #X msg 37 110 220500;
 #X obj 37 132 array size oneSound;
-#X msg 351 157 0;
-#X msg 384 157 1;
-#X obj 397 249 random 15;
-#X obj 397 272 + 4;
-#X obj 432 155 random 200;
-#X obj 432 179 + 120;
+#X msg 346 199 0;
+#X msg 379 199 1;
+#X obj 392 291 random 15;
+#X obj 392 314 + 4;
+#X obj 427 197 random 200;
+#X obj 427 221 + 120;
 #X msg 593 309 \; oneSound normalize 1;
 #N canvas 329 161 611 388 vu 0;
 #X obj 59 111 env~ 1024;
@@ -106,6 +106,9 @@ need to convert the output to dB with rmstodb and also subtract by
 #X obj 412 24 r bela_digitalIn12;
 #X obj 411 80 print digital12;
 #X obj 412 51 bela_debounce;
+#X obj 935 288 < 7000;
+#X obj 935 312 sel 1;
+#X msg 831 375 \; oneSound const 0;
 #X connect 1 0 5 0;
 #X connect 2 0 1 0;
 #X connect 3 0 4 0;
@@ -141,6 +144,7 @@ need to convert the output to dB with rmstodb and also subtract by
 #X connect 29 0 24 0;
 #X connect 30 0 31 0;
 #X connect 31 0 35 0;
+#X connect 31 0 60 0;
 #X connect 32 0 30 0;
 #X connect 33 0 32 0;
 #X connect 35 0 36 0;
@@ -166,7 +170,9 @@ need to convert the output to dB with rmstodb and also subtract by
 #X connect 57 0 59 0;
 #X connect 59 0 58 0;
 #X connect 59 0 26 0;
-#X restore 238 241 pd guts;
+#X connect 60 0 61 0;
+#X connect 61 0 62 0;
+#X restore 237 241 pd guts;
 #X obj 92 35 tgl 200 0 record_play_rcv empty empty 17 7 0 10 #faff00
 #000000 #000000 0 1;
 #X obj 300 113 vu 15 120 \$0-vu-L empty 20 10 1 24 #404040 #000000
